@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="App">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Users</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script src="User-Controller.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Mate+SC&display=swap" rel="stylesheet">   
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Mate+SC&family=Mukta:wght@300&display=swap" rel="stylesheet">
+     
+
+        <style>
+
+            body {
+                background: linear-gradient(to right, #732FDF, #BD00FF);
+            }
+
+            * {
+                padding: 0px;
+                margin: 0px;
+            }
+
+            div {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            form {
+                width: 65%;
+                flex-grow: 7;
+                margin-top: 175px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            input, select, button {
+                display: block;
+                width: 30%;
+                padding: 10px;
+                margin: 0px auto;
+            }
+
+            select {
+                width: 32.5% !important;
+                margin-top: 15px;
+            }
+
+            button {
+                width: 12%;
+                margin-top: 30px;
+                cursor: pointer;
+                background: linear-gradient(45deg, #4AE491, #49AA75);
+                border: none;
+                padding: 15px !important;
+                border-radius: 5px;
+                font-weight: bold;
+                color: rgb(0, 0, 0);
+                transition: all 600ms;
+            }
+
+            button:hover {
+                background: linear-gradient(45deg, #39c57a, #469e6e);
+            }
+
+            #lista-div {
+                flex-grow: 3;
+                width: 30%;
+            }
+
+            h1 {
+                margin-top: 50px;
+                font-family: 'Mate SC', serif;
+                color: rgb(255, 255, 255);
+            }
+
+            #ul {
+                width: 100%;
+                margin-top: 0px;
+            }
+
+            ul {
+                list-style: none;
+            }
+
+            li {
+                margin: 15px;
+                font-family: 'Mate SC', serif;
+                font-family: 'Mukta', sans-serif;
+                font-size: 21px;
+                font-weight: bold;
+                color:cyan;
+            }
+
+        </style>
+
+    </head>
+    <body ng-controller="User-Controller">
+        <div>
+            <form>
+                <input ng-model="NewUser.name" id="name" type="text" placeholder="Nombre Completo"/>
+                <select ng-model="NewUser.ocupation" id="Ocupacion">
+                    <option value="" disabled selected value="">Ocupacion</option>
+                    <option value="Militar">Militar</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Profesor">Profesor</option>
+                </select>
+                <button ng-click="OperacionUser()">Agregar</button>
+            </form>
+            <div id="lista-div">
+                <div>
+                    <h1>Usuarios</h1>
+                </div>
+                <div id="ul">
+                    <ul>
+                        <li ng-repeat="user in got_users">
+                            <span>{{$index+1  + " - " + user.name}}</span>
+                            <span>{{" -  " + "(" + user.ocupation + ")"}}</span>
+                        </li>                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
